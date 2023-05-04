@@ -1,10 +1,11 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable, NotFoundException, Inject } from '@nestjs/common';
 
 import { Brand } from '../entities/brand.entity';
 import { CreateBrandDto, UpdateBrandDto } from '../dtos/brand.dtos';
 
 @Injectable()
 export class BrandsService {
+  constructor(@Inject('API_KEY') private apiKey: string) {}
   private counterId = 1;
   private brands: Brand[] = [
     {
